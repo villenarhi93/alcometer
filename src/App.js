@@ -6,6 +6,7 @@ function App() {
   const [bottles, setBottles] = useState(0);
   const [time, setTime] = useState(0);
   const [alcohol, setAlcohol] = useState(0);
+  const [gender, setGender] = useState("male")
   
   const calculate = (e) => {
     e.preventDefault()
@@ -16,9 +17,9 @@ function App() {
 
     let result = 0;
 
-    if(document.getElementById('gender_Male').checked) {
+    if (gender === "male") {
        result = left / (weight * 0.7)
-    }else if(document.getElementById('gender_Female').checked) {
+    }else {
        result = left / (weight * 0.6)
     }
 
@@ -48,9 +49,9 @@ function App() {
         </div>
         <div>
           <span>Gender</span>
-          <input type="radio" name="gender" id="gender_Male" value="Male" />
+          <input type="radio" name="gender" value="male" onChange={e => setGender(e.target.value)} defaultChecked />
           <label>Male</label>
-          <input type="radio" name="gender" id="gender_Female" value="Female" />
+          <input type="radio" name="gender" value="female" onChange={e => setGender(e.target.value)}/>
           <label>Women</label>
         </div>
         <div>
